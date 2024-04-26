@@ -22,7 +22,7 @@ export default function Home() {
   }>();
   useEffect(() => {
     const fetchDataFromHono = async () => {
-      const fetchUrl = process.env.NEXT_PUBLIC_CLOUDFLARE_WORKER_URL || "http://localhost:3000";
+      const fetchUrl = process.env.NEXT_PUBLIC_CLOUDFLARE_WORKER_URL;
       if (!input) return;
       setSearchResult(undefined);
       const res = await fetch(`${fetchUrl}${input}`);
@@ -34,7 +34,7 @@ export default function Home() {
     };
 
     const fetchDataFromNext = async () => {
-      const fetchUrl = process.env.NEXT_BACKEND_URL || "http://localhost:3000";
+      const fetchUrl = process.env.NEXT_PUBLIC_API_URL;
       if (!input) return;
       setSearchResult(undefined);
       const res = await axios.post(`${fetchUrl}/api`,{ search: input})
