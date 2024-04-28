@@ -4,9 +4,6 @@ import { Hono } from "hono";
 import { env } from "hono/adapter";
 import { cors } from "hono/cors";
 import { handle } from "hono/vercel";
-import { NextApiRequest, NextApiResponse } from "next";
-import { NextRequest, NextResponse } from "next/server";
-
 export const runtime = 'edge';
 
 const app = new Hono().basePath("/api");

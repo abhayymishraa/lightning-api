@@ -37,10 +37,11 @@ export default function Home() {
       const fetchUrl = process.env.NEXT_PUBLIC_API_URL;
       if (!input) return;
       setSearchResult(undefined);
-      const res = await axios.post(`${fetchUrl}/api`,{ search: input})
-    ;
-    const data = res.data; 
-      setSearchResult(data as unknown as {results: string[],duration: number});
+      const res = await axios.post(`${fetchUrl}/api`, { search: input });
+      const data = res.data;
+      setSearchResult(
+        data as unknown as { results: string[]; duration: number }
+      );
     };
 
     if (selectedBox === 1) {
@@ -54,7 +55,10 @@ export default function Home() {
   };
   return (
     <main className="h-screen w-screen ">
-      <div className="w-full flex justify-end items-center pt-16 pr-16" > <ModeToggle  /> </div>
+      <div className="w-full flex justify-end items-center pt-16 pr-16">
+        {" "}
+        <ModeToggle />{" "}
+      </div>
       <div className="flex flex-col gap-6 items-center pt-32 duration-500 animate-in animate fade-in-5 slide-in-from-bottom-2.5">
         <div className="flex items-center justify-center gap-3">
           <h1 className="text-5xl tracking-tight font-bold">LIGHTNING-API </h1>{" "}
@@ -106,9 +110,20 @@ export default function Home() {
         </div>
 
         <div className=" container flex sm:flex-row flex-col  justify-between  sm:mt-30 pt-20 gap-10 w-auto ">
-          <Box id={1} selected={selectedBox === 1} onClick={handleBoxClick} href="/images/logo-small.png" title="Honobackend with redis and cloudflare-workers " />
-          <Box id={2} selected={selectedBox === 2} onClick={handleBoxClick} 
-          title="Nextjs Backend with Redis "  href="/images/next.png"  />
+          <Box
+            id={1}
+            selected={selectedBox === 1}
+            onClick={handleBoxClick}
+            href="/images/logo-small.png"
+            title="Honobackend with redis and cloudflare-workers "
+          />
+          <Box
+            id={2}
+            selected={selectedBox === 2}
+            onClick={handleBoxClick}
+            title="Nextjs Backend with Redis "
+            href="/images/next.png"
+          />
         </div>
       </div>
     </main>
